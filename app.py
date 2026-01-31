@@ -66,7 +66,12 @@ def notes_page():
         notes.insert(0, {"id": new_id, "title": title, "course": course, "content": content, "date": date.today().strftime("%b %d, %Y"), "color": color})
         return redirect(url_for("notes_page"))
     return render_template("notes.html", notes=notes)
+    
+@app.route('/lms')
+def lms():
+    return '<a href="https://xsite.singaporetech.edu.sg/d2l/loginh/?target=/d2l/home/167602" target="_blank">SIT xSiTe LMS</a>'
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+
