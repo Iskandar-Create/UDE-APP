@@ -31,7 +31,16 @@ def forum():
         text = request.form.get("text") or ""
         if text.strip():
             new_id = max(p["id"] for p in posts) + 1 if posts else 1
-            posts.insert(0, {"id": new_id, "author": author, "course": course, "time": "Just now", "text": text, "likes": 0, "comments": 0, "color": "blue"})
+            posts.insert(0, {
+                "id": new_id,
+                "author": author,
+                "course": course,
+                "time": "Just now",
+                "text": text,
+                "likes": 0,
+                "comments": 0,
+                "color": "blue"
+            })
         return redirect(url_for("forum"))
     return render_template("forum.html", posts=posts)
 
@@ -75,17 +84,10 @@ def lms():
 def health():
     return 'OK', 200
 
-@app.route('/')
-def index():
-    return render_template('base.html')  # or your index.html
-
-@app.route('/')
-def home():
-    return render_template
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+
 
 
 
