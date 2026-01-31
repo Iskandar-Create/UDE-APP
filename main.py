@@ -71,8 +71,17 @@ def notes_page():
 def lms():
     return '<a href="https://xsite.singaporetech.edu.sg/d2l/loginh/?target=/d2l/home/167602" target="_blank">SIT xSiTe LMS</a>'
 
+@app.route('/health')
+def health():
+    return 'OK', 200
+
+@app.route('/')
+def home():
+    return '<h1>Student Hub - SIT Punggol</h1><a href="/forum">Forum</a> | <a href="/calendar
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+
 
 
