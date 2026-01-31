@@ -75,13 +75,25 @@ def lms():
 def health():
     return 'OK', 200
 
+# FIXED ✅
 @app.route('/')
-def home():
-    return '<h1>Student Hub - SIT Punggol</h1><a href="/forum">Forum</a> | <a href="/calendar
+def index():
+    return '''
+    <!DOCTYPE html>
+    <html>
+    <head><title>Student Hub</title></head>
+    <body>
+        <h1>Student Hub - SIT Punggol</h1>
+        <a href="/forum">Forum</a> | 
+        <a href="/calendar">Calendar</a>
+    </body>
+    </html>
+    '''
 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+
 
 
 
