@@ -115,3 +115,26 @@ function initCalendar() {
   
   generateCalendar(currentDate);
 }
+
+document.querySelectorAll('.toggle-comments-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const postId = btn.closest('.comments-toggle').dataset.postId;
+    const panel = document.getElementById('comments-' + postId);
+    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  });
+});
+
+function addComment(postId) {
+  const author = document.getElementById('comment-author-' + postId).value.trim() || 'Anonymous';
+  const text = document.getElementById('comment-text-' + postId).value.trim();
+  
+  if (!text) return;
+  
+  fetch(`/comment/${postId}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `comment_author=${encodeURIComponent(author)}&comment_text=${encodeURIComponent(text)}`
+  }).then(() => {
+    location.reload();  // Refresh to show new comment
+  });
+}
