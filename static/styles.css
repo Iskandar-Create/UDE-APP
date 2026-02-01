@@ -94,6 +94,46 @@ body {
   color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 700;
 }
 
+.comments-toggle { margin: 12px 0; }
+.toggle-comments-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white; border: none; padding: 10px 20px;
+  border-radius: 25px; cursor: pointer; font-weight: 600;
+  transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+}
+.toggle-comments-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.6); }
+
+.comments-panel {
+  background: #f8f9ff; border-radius: 16px; padding: 20px;
+  margin: 12px 0; border: 1px solid #e3e8ff; box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+.new-comment-form { margin-bottom: 20px; display: flex; flex-direction: column; gap: 12px; }
+.new-comment-form input, .new-comment-form textarea {
+  padding: 12px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 14px;
+  transition: border-color 0.2s;
+}
+.new-comment-form input:focus, .new-comment-form textarea:focus { border-color: #667eea; outline: none; }
+.new-comment-form button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white; border: none; padding: 12px; border-radius: 12px;
+  font-weight: 600; cursor: pointer; transition: transform 0.2s;
+}
+.new-comment-form button:hover { transform: translateY(-1px); }
+
+.comments-list { max-height: 300px; overflow-y: auto; }
+.comment-item {
+  background: white; padding: 16px; margin-bottom: 12px;
+  border-radius: 12px; border-left: 4px solid #667eea;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.comment-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.comment-author { font-weight: 600; color: #1e293b; }
+.comment-time { font-size: 12px; color: #64748b; }
+.comment-body { color: #334155; line-height: 1.5; }
+
 .post-author { font-weight: 600; }
 .post-meta { font-size: 12px; color: var(--text-muted); display: flex; gap: 8px; margin-top: 2px; }
 .post-tag { background: rgba(255, 255, 255, 0.7); padding: 2px 8px; border-radius: 999px; }
@@ -293,3 +333,4 @@ body {
     padding: 6px 2px;
   }
 }
+
