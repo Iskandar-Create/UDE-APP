@@ -30,7 +30,7 @@
     <form method="post" class="new-post-form" id="event-form">
       <input name="title" placeholder="Event title" required />
       <input name="datetime" id="event-datetime" placeholder="Date & Time (e.g. Jan 27 at 15:00)" required />
-      <input name="location" placeholder="Location (e.g. Engineering 405)" />
+      <input name="location" placeholder="Location (e.g. E2-06-12)" />
       <div class="form-actions">
         <button type="button" class="secondary-button" id="cancel-event-btn">Cancel</button>
         <button type="submit" class="primary-button">Save Event</button>
@@ -60,4 +60,5 @@
   // Calendar data passed from Flask
   window.events = {{ events|tojson|safe }};
 </script>
+
 {% endblock %}
