@@ -34,17 +34,28 @@
     <p class="post-text">{{ post.text }}</p>
     
     <!-- COMMENTS SECTION -->
-    <div class="comments-section">
-      <form id="comment-form-{{ post.id }}" class="comment-form">
-        <input type="text" name="comment_author" placeholder="Your name" maxlength="50">
-        <textarea name="comment_text" placeholder="Add comment..." required></textarea>
-        <button type="submit">Comment</button>
-      </form>
+    <div class="comments-toggle" data-post-id="{{ post.id }}">
+      <button class="toggle-comments-btn">
+        💬 {{ post.comments }} comments
+      </button>
+    </div>
+    <div class="comments-panel" id="comments-{{ post.id }}" style="display: none;">
+      <!-- Add new comment form -->
+      <div class="new-comment-form">
+        <input type="text" id="comment-author-{{ post.id }}" placeholder="Your name">
+        <textarea id="comment-text-{{ post.id }}" placeholder="Write a comment..." required></textarea>
+        <button onclick="addComment({{ post.id }})">Post Comment</button>
+      </div>
       
-      <div class="comments-list" id="comments-{{ post.id }}">
+      <!-- Existing comments -->
+      <div class="comments-list">
         {% for comment in post.comments_list %}
-        <div class="comment">
-          <strong>{{ comment.author }}</strong> ({{ comment.time }}): {{ comment.text }}
+        <div class="comment-item">
+          <div class="comment-header">
+            <span class="comment-author">{{ comment.author }}</span>
+            <span class="comment-time">{{ comment.time }}</span>
+          </div>
+          <div class="comment-body">{{ comment.text }}</div>
         </div>
         {% endfor %}
       </div>
@@ -83,3 +94,4 @@ $(document).ready(function() {
 });
 </script>
 {% endblock %}
+
