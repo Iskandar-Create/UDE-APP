@@ -1,14 +1,17 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import os
 from datetime import date
 
 app = Flask(__name__)
 
-# Forum posts
+# Forum posts - now with comments list
 posts = [
-    {"id": 1, "author": "Iskandar", "course": "Engineering Math 1", "time": "2 hours ago", "text": "Can someone explain how to solve integration by u-sub?", "likes": 5, "comments": 1, "color": "blue"},
-    {"id": 2, "author": "Sinclair", "course": "Electrical system", "time": "5 hours ago", "text": "How do i use mesh analysis with capcitors involved?", "likes": 8, "comments": 1, "color": "purple"},
-    {"id": 3, "author": "John Engineering", "course": "Engineering", "time": "1 day ago", "text": "I don't need help, I'm just here to brag?", "likes": 67, "comments": 0, "color": "pink"}
+    {"id": 1, "author": "Iskandar", "course": "Engineering Math 1", "time": "2 hours ago", "text": "Can someone explain how to solve integration by u-sub?", "likes": 5, "comments": 1, "color": "blue",
+     "comments_list": [{"author": "Helper", "text": "Let u = ...", "time": "1 hour ago"}]},
+    {"id": 2, "author": "Sinclair", "course": "Electrical system", "time": "5 hours ago", "text": "How do i use mesh analysis with capcitors involved?", "likes": 8, "comments": 1, "color": "purple",
+     "comments_list": []},
+    {"id": 3, "author": "John Engineering", "course": "Engineering", "time": "1 day ago", "text": "I don't need help, I'm just here to brag?", "likes": 67, "comments": 0, "color": "pink",
+     "comments_list": []}
 ]
 
 # Calendar events
@@ -39,7 +42,8 @@ def forum():
                 "text": text,
                 "likes": 0,
                 "comments": 0,
-                "color": "blue"
+                "color": "blue",
+                "comments_list": []
             })
         return redirect(url_for("forum"))
     return render_template("forum.html", posts=posts)
@@ -50,6 +54,22 @@ def like(post_id):
         if p["id"] == post_id:
             p["likes"] += 1
             break
+    return ("", 204)
+
+@app.route("/comment/<int:post_id>", methods=["POST"])
+def add_comment(post_id):
+    comment_text = request.form.get("comment_text", "").strip()
+    author = request.form.get("comment_author", "Anonymous").strip()
+    if comment_text:
+        for p in posts:
+            if p["id"] == post_id:
+                p["comments_list"].append({
+                    "author": author or "Anonymous",
+                    "text": comment_text,
+                    "time": "Just now"
+                })
+                p["comments"] += 1
+                break
     return ("", 204)
 
 @app.route("/calendar", methods=["GET", "POST"])
