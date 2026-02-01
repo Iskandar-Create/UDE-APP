@@ -5,7 +5,6 @@ from datetime import date
 app = Flask(__name__)
 
 # Forum posts - now with comments list
-# REPLACE your posts = [...] with this EXACT block:
 posts = [
     {"id": 1, "author": "Iskandar", "course": "Engineering Math 1", "time": "2 hours ago", "text": "Can someone explain how to solve integration by u-sub?", "likes": 5, "comments": 1, "color": "blue", "comments_list": [{"author": "Helper", "text": "Let u = ...", "time": "1 hour ago"}]},
     {"id": 2, "author": "Sinclair", "course": "Electrical system", "time": "5 hours ago", "text": "How do i use mesh analysis with capcitors involved?", "likes": 8, "comments": 1, "color": "purple", "comments_list": []},
@@ -45,6 +44,11 @@ def forum():
                 "comments_list": []
             })
         return redirect(url_for("forum"))
+    for post in posts:
+        if "comments_list" not in post:
+            post["comments_list"] = []
+            post["comments"] = len(post["comments_list"])
+    
     return render_template("forum.html", posts=posts)
 
 @app.route("/like/<int:post_id>", methods=["POST"])
@@ -105,4 +109,5 @@ def health():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+
 
