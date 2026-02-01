@@ -8,7 +8,7 @@ app = Flask(__name__)
 posts = [
     {"id": 1, "author": "Iskandar", "course": "Engineering Math 1", "time": "2 hours ago", "text": "Can someone explain how to solve integration by u-sub?", "likes": 5, "comments": 1, "color": "blue", "comments_list": [{"author": "Helper", "text": "Let u = ...", "time": "1 hour ago"}]},
     {"id": 2, "author": "Sinclair", "course": "Electrical system", "time": "5 hours ago", "text": "How do i use mesh analysis with capcitors involved?", "likes": 8, "comments": 1, "color": "purple", "comments_list": []},
-    {"id": 3, "author": "John Engineering", "course": "Engineering", "time": "1 day ago", "text": "I don't need help, I'm just here to brag?", "likes": 67, "comments": 0, "color": "pink", "comments_list": []}
+    {"id": 3, "author": "John Engineering", "course": "Engineering", "time": "1 day ago", "text": "I don't need help, I'm just here to brag, HAHAHAHA", "likes": 67, "comments": 0, "color": "pink", "comments_list": []}
 ]
 
 
@@ -109,5 +109,6 @@ def health():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+
 
 
