@@ -1,6 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- Your existing action-bar, new-post-panel unchanged -->
+<section class="action-bar">
+  <button class="primary-button" id="open-form-btn">+ Ask a Question</button>
+</section>
+
+<section class="new-post-panel" id="new-post-panel">
+  <form method="post" class="new-post-form">
+    <div class="field-row">
+      <input name="author" placeholder="Your name" />
+      <input name="course" placeholder="Course (e.g. Calculus II)" />
+    </div>
+    <textarea name="text" rows="4" placeholder="Describe your question..."></textarea>
+    <div class="form-actions">
+      <button type="button" class="secondary-button" id="cancel-form-btn">Cancel</button>
+      <button type="submit" class="primary-button">Post</button>
+    </div>
+  </form>
+</section>
 
 <section class="post-list">
   {% for post in posts %}
@@ -17,31 +33,28 @@
     </header>
     <p class="post-text">{{ post.text }}</p>
     
-    <!-- ADD COMMENTS HERE -->
+    <!-- COMMENTS SECTION -->
     <div class="comments-section">
-      <!-- Comment form -->
-      <form id="comment-form-{{ post.id }}" class="comment-form" style="margin: 10px 0;">
-        <input type="text" name="comment_author" placeholder="Your name" maxlength="50" style="width: 100px;">
-        <textarea name="comment_text" placeholder="Add comment..." required style="width: 300px; height: 60px;"></textarea>
-        <button type="submit" style="margin-left: 10px;">Comment</button>
+      <form id="comment-form-{{ post.id }}" class="comment-form">
+        <input type="text" name="comment_author" placeholder="Your name" maxlength="50">
+        <textarea name="comment_text" placeholder="Add comment..." required></textarea>
+        <button type="submit">Comment</button>
       </form>
       
-      <!-- Comments display -->
-      <div class="comments-list" id="comments-{{ post.id }}" style="margin-top: 10px;">
+      <div class="comments-list" id="comments-{{ post.id }}">
         {% for comment in post.comments_list %}
-        <div class="comment" style="background: #f5f5f5; padding: 8px; margin: 5px 0; border-radius: 4px;">
+        <div class="comment">
           <strong>{{ comment.author }}</strong> ({{ comment.time }}): {{ comment.text }}
         </div>
         {% endfor %}
       </div>
     </div>
-    <!-- END COMMENTS -->
     
     <footer class="post-footer">
       <button class="icon-button like-btn" data-id="{{ post.id }}">
         ❤️ <span>{{ post.likes }}</span>
       </button>
-      <button class="icon-button comment-toggle" data-id="{{ post.id }}">
+      <button class="icon-button">
         💬 <span>{{ post.comments }}</span>
       </button>
     </footer>
@@ -49,25 +62,22 @@
   {% endfor %}
 </section>
 
-<!-- ADD JS AT BOTTOM OF BLOCK (before {% endblock %}) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
-  // Existing like button JS (add if missing)
-  $('.like-btn').on('click', function() {
+  $('.like-btn').click(function() {
     var postId = $(this).data('id');
     $.post('/like/' + postId, function() {
       location.reload();
     });
   });
   
-  // NEW: Comment form JS
-  $('.comment-form').on('submit', function(e) {
+  $('.comment-form').submit(function(e) {
     e.preventDefault();
     var form = $(this);
     var postId = form.attr('id').split('-')[2];
     $.post('/comment/' + postId, form.serialize(), function() {
-      location.reload();  // Simple: reload to show comments
+      location.reload();
     });
   });
 });
