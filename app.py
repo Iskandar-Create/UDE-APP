@@ -6,21 +6,21 @@ app = Flask(__name__)
 
 # Forum posts
 posts = [
-    {"id": 1, "author": "Sarah Chen", "course": "Calculus II", "time": "2 hours ago", "text": "Can someone explain how to solve integration by parts? I'm stuck on problem 3.4 from the textbook.", "likes": 5, "comments": 1, "color": "blue"},
-    {"id": 2, "author": "Alex Rodriguez", "course": "Computer Science", "time": "5 hours ago", "text": "What's the difference between a stack and a queue in data structures?", "likes": 8, "comments": 1, "color": "purple"},
-    {"id": 3, "author": "Jordan Lee", "course": "Chemistry", "time": "1 day ago", "text": "Need help balancing this redox equation for tomorrow's lab. Anyone available?", "likes": 3, "comments": 0, "color": "pink"}
+    {"id": 1, "author": "Iskandar", "course": "Engineering Math 1", "time": "2 hours ago", "text": "Can someone explain how to solve integration by u-sub?", "likes": 5, "comments": 1, "color": "blue"},
+    {"id": 2, "author": "Sinclair", "course": "Electrical system", "time": "5 hours ago", "text": "How do i use mesh analysis with capcitors involved?", "likes": 8, "comments": 1, "color": "purple"},
+    {"id": 3, "author": "John Engineering", "course": "Engineering", "time": "1 day ago", "text": "I don't need help, I'm just here to brag?", "likes": 67, "comments": 0, "color": "pink"}
 ]
 
 # Calendar events
 events = [
-    {"id": 1, "title": "Office Hours - Prof. Smith", "datetime": "Jan 27 at 15:00", "location": "Engineering 405", "shared_by": "You"}
+    {"id": 1, "title": "Office Hours - Prof. Lim", "datetime": "Jan 27 at 15:00", "location": "E2-07-12", "shared_by": "You"}
 ]
 
 # Notes
 notes = [
-    {"id": 1, "title": "Integration Formulas", "course": "Calculus II", "content": "∫x^n dx = (x^(n+1))/(n+1) + C\n∫e^x dx = e^x + C\n∫(1/x) dx = ln|x| + C", "date": "Jan 25, 2026", "color": "yellow"},
-    {"id": 2, "title": "Data Structures Review", "course": "Computer Science", "content": "Arrays: O(1) access, O(n) insertion\nLinked Lists: O(n) access, O(1) insertion\nHash Tables: O(1) average for search/insert", "date": "Jan 26, 2026", "color": "blue"},
-    {"id": 3, "title": "Lab Safety Rules", "course": "Chemistry", "content": "- Always wear goggles\n- No food or drinks\n- Tie back long hair", "date": "Jan 20, 2026", "color": "green"}
+    {"id": 1, "title": "Integration Formulas", "course": "Engineering Math 1", "content": "∫x^n dx = (x^(n+1))/(n+1) + C\n∫e^x dx = e^x + C\n∫(1/x) dx = ln|x| + C", "date": "Jan 25, 2026", "color": "yellow"},
+    {"id": 2, "title": "O Notation", "course": "Data Structure", "content": "Arrays: O(1) access, O(n) insertion\nLinked Lists: O(n) access, O(1) insertion\nHash Tables: O(1) average for search/insert", "date": "Jan 26, 2026", "color": "blue"},
+    {"id": 3, "title": "John here again", "course": "Engineering", "content": "I AM GOATED AT ENGINEERING HAHAHAHA", "date": "Jan 20, 2026", "color": "green"}
 ]
 
 @app.route("/", methods=["GET", "POST"])
@@ -87,6 +87,7 @@ def health():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+
 
 
 
