@@ -26,8 +26,12 @@
     <a href="{{ url_for('notes_page') }}" class="nav-item {% if request.endpoint == 'notes_page' %}nav-active{% endif %}">
       <span class="nav-label">Notes</span>
     </a>
+    <li class="nav-item">
+      <a class="nav-link" href="/lms">📚 xSiTe LMS</a>
+    </li>
   </nav>
 
   <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
+
