@@ -25,6 +25,7 @@ body {
 .topbar {
   background: #00ffff;
   color: var(--white);
+  -webkit-text-fill-color: black;
   -webkit-text-stroke: 1px;
   padding: 16px 20px 22px;
 }
@@ -346,6 +347,7 @@ body {
     padding: 6px 2px;
   }
 }
+
 
 
 
