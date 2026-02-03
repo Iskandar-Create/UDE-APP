@@ -28,7 +28,7 @@ body {
 }
 
 .logo-img {
-  height: 60px;
+  height: 100px;
   display: block;
 }
 
@@ -344,6 +344,7 @@ body {
     padding: 6px 2px;
   }
 }
+
 
 
 
