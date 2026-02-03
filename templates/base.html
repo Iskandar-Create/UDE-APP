@@ -8,8 +8,10 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="topbar-title">Student Hub</div>
-    <div class="topbar-subtitle">Connect, Share, Collaborate</div>
+    <div class="topbar-title">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="StudyMate logo" class="logo-img">
+    </div>
+    <div class="topbar-subtitle">Everything in your class, nothing in your way</div>
   </header>
 
   <main class="page">
@@ -34,5 +36,6 @@
   <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
+
 
 
