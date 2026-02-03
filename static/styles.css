@@ -1,6 +1,6 @@
 :root {
   --bg: #f5f7ff;
-  --blue: #00ffff;
+  --blue: #e3f0ff;
   --pink: #ffe3f0;
   --purple: #f3e5ff;
   --accent: #7b3cff;
@@ -22,7 +22,7 @@ body {
 }
 
 .topbar {
-  background: #2563eb;
+  background: #00ffff;
   color: var(--white);
   padding: 16px 20px 22px;
 }
@@ -344,6 +344,7 @@ body {
     padding: 6px 2px;
   }
 }
+
 
 
 
