@@ -1,6 +1,6 @@
 :root {
   --bg: #f5f7ff;
-  --blue: #e3f0ff;
+  --blue: #00ffff;
   --pink: #ffe3f0;
   --purple: #f3e5ff;
   --accent: #7b3cff;
@@ -344,6 +344,7 @@ body {
     padding: 6px 2px;
   }
 }
+
 
 
 
