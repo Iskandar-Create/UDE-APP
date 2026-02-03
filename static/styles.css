@@ -10,6 +10,7 @@
   --text-main: #0f172a;
   --text-muted: #6b7280;
   --white: #ffffff;
+  --black: #000000;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -23,7 +24,7 @@ body {
 
 .topbar {
   background: #00ffff;
-  color: var(--white);
+  color: var(--black);
   padding: 16px 20px 22px;
 }
 
@@ -344,6 +345,7 @@ body {
     padding: 6px 2px;
   }
 }
+
 
 
 
