@@ -52,6 +52,12 @@ body {
 
 .action-bar { display: flex; justify-content: center; margin-bottom: 12px; }
 
+.nav-icon {
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
 .primary-button, .secondary-button {
   border-radius: 999px; border: none; padding: 10px 20px; font-weight: 600; cursor: pointer;
 }
@@ -338,6 +344,7 @@ body {
     padding: 6px 2px;
   }
 }
+
 
 
 
